@@ -62,15 +62,15 @@ class Biesection {
   }
 }
 
-
-
 // void main() {
 //   Biesection biesection = Biesection(
 //       eps: 1, xL: 0, xU: 1, expressionString: "4 * x^3 - 6 * x^2 + 7*x - 2.3");
 //   biesection.biesection();
-//   for (var e in biesection.iterations) {
-
-//   }
+//   for (var e in biesection.iterations) {}
 // }
 
 
+// for (var e in biesection.iterations) {
+//           print(
+//               "iter: ${e.iter.toStringAsFixed(3)} |xl: ${e.xl.toStringAsFixed(3)}| f(xl): ${e.fxl.toStringAsFixed(3)}|xu: ${e.xu.toStringAsFixed(3)}|f(xu): ${e.fxu.toStringAsFixed(3)}|xr: ${e.xr.toStringAsFixed(3)}|f(xr): ${e.fxr.toStringAsFixed(3)}|error: ${e.error.toStringAsFixed(3)}");
+//         }
