@@ -7,7 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:numerical_calc/utils/constants/app_colors.dart';
 import 'package:numerical_calc/views/widgets/methods_form.dart';
 
-import '../../../main_methods/biesect.dart';
+import '../../../math/polynomials/biesect.dart';
+import '../../widgets/custom_input_feild.dart';
 
 class BiesectionForm extends StatefulWidget {
   const BiesectionForm({super.key});
@@ -68,18 +69,18 @@ class _BiesectionFormState extends State<BiesectionForm> {
       } catch (e) {
         reset();
         final snackBar = SnackBar(
-          duration: const Duration(seconds: 2),
-                            clipBehavior: Clip.none,
-                            elevation: 0,
-                            behavior: SnackBarBehavior.fixed,
-                            backgroundColor: Colors.transparent,
-                            content: AwesomeSnackbarContent(
-                              title: "Error",
-                              message: "Enter Valid Input",
-                              contentType: ContentType.warning,
-                            ));
-                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            duration: const Duration(seconds: 2),
+            clipBehavior: Clip.none,
+            elevation: 0,
+            behavior: SnackBarBehavior.fixed,
+            backgroundColor: Colors.transparent,
+            content: AwesomeSnackbarContent(
+              title: "Error",
+              message: "Enter Valid Input",
+              contentType: ContentType.warning,
+            ));
+        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
     });
   }
@@ -129,59 +130,75 @@ class _BiesectionFormState extends State<BiesectionForm> {
             ),
             const Gap(30),
             isAcive
-                ? Container(
-                    decoration: ShapeDecoration(
-                        color: txtfeldTableColor,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20))),
-                    height: MediaQuery.sizeOf(context).height * 0.6,
-                    child: DataTable2(
-                      scrollController: ScrollController(),
-                      columns: tableheader
-                          .map((e) => DataColumn(
-                                  label: Text(
-                                e,
-                                style: GoogleFonts.montserrat(
-                                    textStyle: const TextStyle(fontSize: 15)),
-                              )))
-                          .toList(),
-                      rows: biesection.iterations
-                          .map((e) => DataRow(cells: [
-                                DataCell(Text(e.iter.toStringAsFixed(0),
+                ? Column(
+                    children: [
+                      Container(
+                        decoration: ShapeDecoration(
+                            color: txtfeldTableColor,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20))),
+                        height: MediaQuery.sizeOf(context).height * 0.5,
+                        child: DataTable2(
+                          scrollController: ScrollController(),
+                          columns: tableheader
+                              .map((e) => DataColumn(
+                                      label: Text(
+                                    e,
                                     style: GoogleFonts.montserrat(
                                         textStyle:
-                                            const TextStyle(fontSize: 15)))),
-                                DataCell(Text(e.xl.toStringAsFixed(3),
-                                    style: GoogleFonts.montserrat(
-                                        textStyle:
-                                            const TextStyle(fontSize: 15)))),
-                                DataCell(Text(e.fxl.toStringAsFixed(3),
-                                    style: GoogleFonts.montserrat(
-                                        textStyle:
-                                            const TextStyle(fontSize: 15)))),
-                                DataCell(Text(e.xu.toStringAsFixed(3),
-                                    style: GoogleFonts.montserrat(
-                                        textStyle:
-                                            const TextStyle(fontSize: 15)))),
-                                DataCell(Text(e.fxu.toStringAsFixed(3),
-                                    style: GoogleFonts.montserrat(
-                                        textStyle:
-                                            const TextStyle(fontSize: 15)))),
-                                DataCell(Text(e.xr.toStringAsFixed(3),
-                                    style: GoogleFonts.montserrat(
-                                        textStyle:
-                                            const TextStyle(fontSize: 15)))),
-                                DataCell(Text(e.fxr.toStringAsFixed(3),
-                                    style: GoogleFonts.montserrat(
-                                        textStyle:
-                                            const TextStyle(fontSize: 15)))),
-                                DataCell(Text("${e.error.toStringAsFixed(2)} %",
-                                    style: GoogleFonts.montserrat(
-                                        textStyle:
-                                            const TextStyle(fontSize: 15)))),
-                              ]))
-                          .toList(),
-                    ),
+                                            const TextStyle(fontSize: 15)),
+                                  )))
+                              .toList(),
+                          rows: biesection.iterations
+                              .map((e) => DataRow(cells: [
+                                    DataCell(Text(e.iter.toStringAsFixed(0),
+                                        style: GoogleFonts.montserrat(
+                                            textStyle: const TextStyle(
+                                                fontSize: 15)))),
+                                    DataCell(Text(e.xl.toStringAsFixed(3),
+                                        style: GoogleFonts.montserrat(
+                                            textStyle: const TextStyle(
+                                                fontSize: 15)))),
+                                    DataCell(Text(e.fxl.toStringAsFixed(3),
+                                        style: GoogleFonts.montserrat(
+                                            textStyle: const TextStyle(
+                                                fontSize: 15)))),
+                                    DataCell(Text(e.xu.toStringAsFixed(3),
+                                        style: GoogleFonts.montserrat(
+                                            textStyle: const TextStyle(
+                                                fontSize: 15)))),
+                                    DataCell(Text(e.fxu.toStringAsFixed(3),
+                                        style: GoogleFonts.montserrat(
+                                            textStyle: const TextStyle(
+                                                fontSize: 15)))),
+                                    DataCell(Text(e.xr.toStringAsFixed(3),
+                                        style: GoogleFonts.montserrat(
+                                            textStyle: const TextStyle(
+                                                fontSize: 15)))),
+                                    DataCell(Text(e.fxr.toStringAsFixed(3),
+                                        style: GoogleFonts.montserrat(
+                                            textStyle: const TextStyle(
+                                                fontSize: 15)))),
+                                    DataCell(Text(
+                                        "${e.error.toStringAsFixed(2)} %",
+                                        style: GoogleFonts.montserrat(
+                                            textStyle: const TextStyle(
+                                                fontSize: 15)))),
+                                  ]))
+                              .toList(),
+                        ),
+                      ),
+                      const Gap(20),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Root: ${biesection.iterations.last.xr.toStringAsFixed(3)}",
+                          style: GoogleFonts.montserrat(
+                              textStyle: const TextStyle(
+                                  fontSize: 15, color: Colors.white)),
+                        ),
+                      )
+                    ],
                   )
                 : const SizedBox(),
           ],
@@ -189,91 +206,4 @@ class _BiesectionFormState extends State<BiesectionForm> {
   }
 }
 
-class CustomInputField extends StatelessWidget {
-  const CustomInputField({
-    super.key,
-    required this.controller,
-    required this.label,
-    required this.width,
-  });
-
-  final TextEditingController controller;
-  final String label;
-  final double width;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          label,
-          style: GoogleFonts.montserrat(
-              textStyle: const TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold)),
-        ),
-        const Gap(15),
-        SizedBox(
-          width: width,
-          child: TextField(
-            style: GoogleFonts.montserrat(
-                textStyle: const TextStyle(fontSize: 15)),
-            controller: controller,
-            decoration: const InputDecoration(
-                filled: true,
-                fillColor: txtfeldTableColor,
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(15)))),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-
-// Container(
-//         color: Colors.amber,
-//         height: 300,
-//         child: Column(
-//           children: biesection.iterations
-//               .map((e) => Text(
-//                   "iter: ${e.iter.toStringAsFixed(3)} |xl: ${e.xl.toStringAsFixed(3)}| f(xl): ${e.fxl.toStringAsFixed(3)}|xu: ${e.xu.toStringAsFixed(3)}|f(xu): ${e.fxu.toStringAsFixed(3)}|xr: ${e.xr.toStringAsFixed(3)}|f(xr): ${e.fxr.toStringAsFixed(3)}|error: ${e.error.toStringAsFixed(3)}"))
-//               .toList(),
-//         ),
-//       ),
-
-
-// Biesection(
-//       eps: 1, xL: 0, xU: 1, expressionString: "4 * x^3 - 6 * x^2 + 7*x - 2.3");
-
-
-
-//working table
-// DataTable(
-//                         border: TableBorder.all(color: Colors.white),
-//                         columns: const [
-//                           DataColumn(label: Text("iter")),
-//                           DataColumn(label: Text("Xl")),
-//                           DataColumn(label: Text("f(Xl)")),
-//                           DataColumn(label: Text("Xu")),
-//                           DataColumn(label: Text("f(Xu)")),
-//                           DataColumn(label: Text("Xr")),
-//                           DataColumn(label: Text("f(Xr)")),
-//                           DataColumn(label: Text("error")),
-//                         ],
-//                         rows: biesection.iterations
-//                             .map((e) => DataRow(cells: [
-//                                   DataCell(Text(e.iter.toStringAsFixed(0))),
-//                                   DataCell(Text(e.xl.toStringAsFixed(3))),
-//                                   DataCell(Text(e.fxl.toStringAsFixed(3))),
-//                                   DataCell(Text(e.xu.toStringAsFixed(3))),
-//                                   DataCell(Text(e.fxu.toStringAsFixed(3))),
-//                                   DataCell(Text(e.xr.toStringAsFixed(3))),
-//                                   DataCell(Text(e.fxr.toStringAsFixed(3))),
-//                                   DataCell(
-//                                       Text("${e.error.toStringAsFixed(2)} %")),
-//                                 ]))
-//                             .toList(),
-//                       ),
+//4*x^3 - 6 * x^2 + 7 * x- 2.3

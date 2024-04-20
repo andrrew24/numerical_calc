@@ -1,8 +1,8 @@
 import 'package:math_expressions/math_expressions.dart';
 
-import '../models/biesect_model.dart';
-import '../other_methods/eval.dart';
-import '../other_methods/get_f.dart';
+import '../../models/biesect_model.dart';
+import '../../other_methods/eval.dart';
+import '../../other_methods/get_f.dart';
 
 class Biesection {
   final double eps;
