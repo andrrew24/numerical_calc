@@ -1,8 +1,8 @@
 import 'package:math_expressions/math_expressions.dart';
 
 import '../../models/secant_model.dart';
-import '../../other_methods/eval.dart';
-import '../../other_methods/get_f.dart';
+import 'other/eval.dart';
+import 'other/get_f.dart';
 
 class Secant {
   final double eps;

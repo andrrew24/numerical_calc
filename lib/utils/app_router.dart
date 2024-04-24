@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:numerical_calc/views/forms/algebric/cramers.dart';
-import 'package:numerical_calc/views/forms/algebric/gauss_eli.dart';
+import 'package:numerical_calc/views/forms/algebric/gauss_eli_form.dart';
 import 'package:numerical_calc/views/forms/algebric/lu_dec.dart';
 import 'package:numerical_calc/views/forms/polynomials/biesection_form.dart';
 import 'package:numerical_calc/views/forms/polynomials/false_position_form.dart';

@@ -162,7 +162,7 @@ class _SimpleFixedFormState extends State<SimpleFixedForm> {
                 )
               ],
             )
-          : SizedBox(),
+          : const SizedBox(),
         ],
       )
     );

@@ -1,8 +1,8 @@
 import 'package:math_expressions/math_expressions.dart';
 import 'package:numerical_calc/models/false_position_model.dart';
 
-import '../../other_methods/eval.dart';
-import '../../other_methods/get_f.dart';
+import 'other/eval.dart';
+import 'other/get_f.dart';
 
 class FalsePosition {
   final double eps;

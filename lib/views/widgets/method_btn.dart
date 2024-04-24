@@ -25,7 +25,7 @@ class MethodButton extends StatelessWidget {
         text,
         style: GoogleFonts.montserrat(
             textStyle: const TextStyle(
-                fontSize: 28,
+                fontSize: 24,
                 color: Colors.white,
                 fontWeight: FontWeight.bold)),
       ),

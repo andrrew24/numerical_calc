@@ -1,8 +1,8 @@
 import 'package:math_expressions/math_expressions.dart';
 
 import '../../models/simple_fixed_iter.dart';
-import '../../other_methods/eval.dart';
-import '../../other_methods/get_f.dart';
+import 'other/eval.dart';
+import 'other/get_f.dart';
 
 class SimpleFixed {
   final double eps;

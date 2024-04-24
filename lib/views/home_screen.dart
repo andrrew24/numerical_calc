@@ -23,13 +23,13 @@ class HomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 MethodButton(
-                  text: "Lu Decomposition",
+                  text: "Lu Decomposition with Pivoting",
                   onpressed: () {
                     GoRouter.of(context).go('/ludecom');
                   },
                 ),
                 MethodButton(
-                  text: "Gauss Elimination",
+                  text: "Gauss Elimination with Pivoting",
                   onpressed: () {
                     GoRouter.of(context).go('/gauss');
                   },
