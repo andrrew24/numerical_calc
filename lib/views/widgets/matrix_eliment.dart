@@ -13,8 +13,8 @@ class MatrixEliment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 40,
-      height: 40,
+      width: 50,
+      height: 50,
       decoration: ShapeDecoration(
           color: txtfeldTableColor,
           shape:

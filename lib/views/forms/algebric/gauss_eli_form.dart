@@ -136,7 +136,7 @@ class _GaussFormState extends State<GaussForm> {
                         ),
                       ],
                     ),
-                    const Gap(230),
+                    const Gap(120),
                     Row(
                       children: [
                         Column(
@@ -179,7 +179,7 @@ class _GaussFormState extends State<GaussForm> {
                                   ))
                               .toList(),
                         ),
-                        Gap(230),
+                        Gap(120),
                         Column(
                           children: [
                             Text(

@@ -19,6 +19,7 @@ class CustomInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
           label,
@@ -33,7 +34,8 @@ class CustomInputField extends StatelessWidget {
           width: width,
           child: TextField(
             style: GoogleFonts.montserrat(
-                textStyle: const TextStyle(fontSize: 15)),
+                textStyle:
+                    const TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
             controller: controller,
             decoration: const InputDecoration(
                 filled: true,

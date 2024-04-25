@@ -23,13 +23,13 @@ class HomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 MethodButton(
-                  text: "Lu Decomposition with Pivoting",
+                  text: "Lu Decomposition",
                   onpressed: () {
                     GoRouter.of(context).go('/ludecom');
                   },
                 ),
                 MethodButton(
-                  text: "Gauss Elimination with Pivoting",
+                  text: "Gauss Elimination",
                   onpressed: () {
                     GoRouter.of(context).go('/gauss');
                   },
@@ -53,9 +53,9 @@ class HomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 MethodButton(
-                  text: "Biesection",
+                  text: "Simple Fixed Point",
                   onpressed: () {
-                    GoRouter.of(context).go('/biesect');
+                    GoRouter.of(context).go('/simplefixed');
                   },
                 ),
                 MethodButton(
@@ -65,9 +65,9 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
                 MethodButton(
-                  text: "Simple Fixed Point",
+                  text: "Bisection",
                   onpressed: () {
-                    GoRouter.of(context).go('/simplefixed');
+                    GoRouter.of(context).go('/biesect');
                   },
                 ),
                 MethodButton(
