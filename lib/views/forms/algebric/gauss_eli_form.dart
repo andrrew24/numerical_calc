@@ -98,7 +98,7 @@ class _GaussFormState extends State<GaussForm> {
                   controller: eq3controller, label: "Eq3", width: 400),
             ],
           ),
-          const Gap(101),
+          const Gap(50),
           isAcive
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.center,

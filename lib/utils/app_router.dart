@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:numerical_calc/views/forms/algebric/cramers_form.dart';
 import 'package:numerical_calc/views/forms/algebric/gauss_eli_form.dart';
+import 'package:numerical_calc/views/forms/algebric/gauss_jordan.dart';
 import 'package:numerical_calc/views/forms/algebric/lu_dec_form.dart';
 import 'package:numerical_calc/views/forms/polynomials/biesection_form.dart';
 import 'package:numerical_calc/views/forms/polynomials/false_position_form.dart';
@@ -37,6 +38,10 @@ final GoRouter router = GoRouter(routes: <RouteBase>[
   GoRoute(
     path: '/gauss',
     builder: (context, state) => const GaussForm(),
+  ),
+  GoRoute(
+    path: '/gaussJordan',
+    builder: (context, state) => const GaussJordan(),
   ),
   GoRoute(
     path: '/ludecom',

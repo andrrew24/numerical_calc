@@ -23,15 +23,21 @@ class HomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 MethodButton(
-                  text: "Lu Decomposition",
-                  onpressed: () {
-                    GoRouter.of(context).go('/ludecom');
-                  },
-                ),
-                MethodButton(
                   text: "Gauss Elimination",
                   onpressed: () {
                     GoRouter.of(context).go('/gauss');
+                  },
+                ),
+                MethodButton(
+                  text: "Gauss Jordan",
+                  onpressed: () {
+                    GoRouter.of(context).go('/gaussJordan');
+                  },
+                ),
+                MethodButton(
+                  text: "Lu Decomposition",
+                  onpressed: () {
+                    GoRouter.of(context).go('/ludecom');
                   },
                 ),
                 MethodButton(
@@ -40,18 +46,18 @@ class HomeScreen extends StatelessWidget {
                     GoRouter.of(context).go('/cramers');
                   },
                 ),
-                MethodButton(
-                  text: "Secant",
-                  onpressed: () {
-                    GoRouter.of(context).go('/secant');
-                  },
-                ),
               ],
             ),
             Image.asset(Assets.imgComputerImg),
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                MethodButton(
+                  text: "Bisection",
+                  onpressed: () {
+                    GoRouter.of(context).go('/biesect');
+                  },
+                ),
                 MethodButton(
                   text: "Simple Fixed Point",
                   onpressed: () {
@@ -65,15 +71,15 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
                 MethodButton(
-                  text: "Bisection",
-                  onpressed: () {
-                    GoRouter.of(context).go('/biesect');
-                  },
-                ),
-                MethodButton(
                   text: "Newton",
                   onpressed: () {
                     GoRouter.of(context).go('/newton');
+                  },
+                ),
+                MethodButton(
+                  text: "Secant",
+                  onpressed: () {
+                    GoRouter.of(context).go('/secant');
                   },
                 ),
               ],

@@ -74,3 +74,5 @@ class Biesection {
 //           print(
 //               "iter: ${e.iter.toStringAsFixed(3)} |xl: ${e.xl.toStringAsFixed(3)}| f(xl): ${e.fxl.toStringAsFixed(3)}|xu: ${e.xu.toStringAsFixed(3)}|f(xu): ${e.fxu.toStringAsFixed(3)}|xr: ${e.xr.toStringAsFixed(3)}|f(xr): ${e.fxr.toStringAsFixed(3)}|error: ${e.error.toStringAsFixed(3)}");
 //         }
+
+

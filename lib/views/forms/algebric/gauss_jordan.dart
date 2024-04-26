@@ -3,37 +3,37 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:numerical_calc/math/algebric/lu_decomposition.dart';
-import 'package:numerical_calc/views/widgets/methods_form.dart';
+import 'package:numerical_calc/math/algebric/gauss_jordan.dart';
 
 import '../../widgets/custom_input_feild.dart';
 import '../../widgets/matrix_eliment.dart';
+import '../../widgets/methods_form.dart';
 
-class LuDecomForm extends StatefulWidget {
-  const LuDecomForm({super.key});
+class GaussJordan extends StatefulWidget {
+  const GaussJordan({super.key});
 
   @override
-  State<LuDecomForm> createState() => _LuDecomFormState();
+  State<GaussJordan> createState() => _GaussJordanState();
 }
 
-class _LuDecomFormState extends State<LuDecomForm> {
-  late LuDecomp luDecomp = LuDecomp(eq1: "", eq2: "", eq3: "");
+class _GaussJordanState extends State<GaussJordan> {
+  late GaussJordanElim gaussJordanElim =
+      GaussJordanElim(eq1: "", eq2: "", eq3: "");
 
   final TextEditingController eq1controller = TextEditingController();
   final TextEditingController eq2controller = TextEditingController();
   final TextEditingController eq3controller = TextEditingController();
 
+  bool isAcive = false;
+
   late String eq1;
   late String eq2;
   late String eq3;
 
-  bool isAcive = false;
-
   reset() {
     setState(() {
-      luDecomp.lower = [];
-      luDecomp.upper = [];
-      luDecomp.solution = [];
+      gaussJordanElim.abMatrix = [];
+      gaussJordanElim.solution = [];
       eq1controller.clear();
       eq2controller.clear();
       eq3controller.clear();
@@ -47,8 +47,9 @@ class _LuDecomFormState extends State<LuDecomForm> {
         eq1 = eq1controller.text;
         eq2 = eq2controller.text;
         eq3 = eq3controller.text;
-        luDecomp = LuDecomp(eq1: eq1, eq2: eq2, eq3: eq3);
-        luDecomp.solve();
+        gaussJordanElim = GaussJordanElim(eq1: eq1, eq2: eq2, eq3: eq3);
+        gaussJordanElim.gaussJordanElimination();
+        gaussJordanElim.getSolution();
         isAcive = true;
       } catch (e) {
         reset();
@@ -72,7 +73,7 @@ class _LuDecomFormState extends State<LuDecomForm> {
   @override
   Widget build(BuildContext context) {
     return MethodForm(
-      methodName: "Lu Decomposition",
+      methodName: "Gauss Jordan",
       backOnpressed: () {
         GoRouter.of(context).go('/');
       },
@@ -104,7 +105,7 @@ class _LuDecomFormState extends State<LuDecomForm> {
                     Row(
                       children: [
                         Text(
-                          "L",
+                          "A / b",
                           style: GoogleFonts.montserrat(
                             textStyle: const TextStyle(
                                 color: Colors.white,
@@ -114,7 +115,7 @@ class _LuDecomFormState extends State<LuDecomForm> {
                         ),
                         const Gap(40),
                         Column(
-                          children: luDecomp.lower
+                          children: gaussJordanElim.abMatrix
                               .map((e) => Row(
                                     children: [
                                       Row(
@@ -134,41 +135,7 @@ class _LuDecomFormState extends State<LuDecomForm> {
                         ),
                       ],
                     ),
-                    Gap(130),
-                    Row(
-                      children: [
-                        Text(
-                          "U",
-                          style: GoogleFonts.montserrat(
-                            textStyle: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        const Gap(40),
-                        Column(
-                          children: luDecomp.upper
-                              .map((e) => Row(
-                                    children: [
-                                      Row(
-                                        children: e
-                                            .map((e) => Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: MatrixEliment(
-                                                      eliment:
-                                                          e.toStringAsFixed(0)),
-                                                ))
-                                            .toList(),
-                                      ),
-                                    ],
-                                  ))
-                              .toList(),
-                        ),
-                      ],
-                    ),
-                    Gap(130),
+                    const Gap(120),
                     Row(
                       children: [
                         Column(
@@ -201,50 +168,9 @@ class _LuDecomFormState extends State<LuDecomForm> {
                             ),
                           ],
                         ),
-                        const Gap(50),
-                        Column(
-                          children: luDecomp.solution[0]
-                              .map((e) => Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: MatrixEliment(
-                                        eliment: e.toStringAsFixed(0)),
-                                  ))
-                              .toList(),
-                        ),
-                        Gap(50),
-                        Column(
-                          children: [
-                            Text(
-                              "C1",
-                              style: GoogleFonts.montserrat(
-                                  textStyle: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold)),
-                            ),
-                            const Gap(30),
-                            Text(
-                              "C2",
-                              style: GoogleFonts.montserrat(
-                                  textStyle: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold)),
-                            ),
-                            const Gap(30),
-                            Text(
-                              "C3",
-                              style: GoogleFonts.montserrat(
-                                  textStyle: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold)),
-                            ),
-                          ],
-                        ),
                         const Gap(40),
                         Column(
-                          children: luDecomp.solution[1]
+                          children: gaussJordanElim.solution
                               .map((e) => Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: MatrixEliment(
@@ -256,7 +182,7 @@ class _LuDecomFormState extends State<LuDecomForm> {
                     )
                   ],
                 )
-              : SizedBox()
+              : const SizedBox()
         ],
       ),
     );

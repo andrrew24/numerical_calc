@@ -88,7 +88,7 @@ class _BiesectionFormState extends State<BiesectionForm> {
   @override
   Widget build(BuildContext context) {
     return MethodForm(
-        methodName: "BiSection",
+        methodName: "Bisection",
         backOnpressed: () {
           GoRouter.of(context).go('/');
         },
